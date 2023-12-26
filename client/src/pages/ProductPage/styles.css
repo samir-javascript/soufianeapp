@@ -1,0 +1,28 @@
+.product-details-container {
+    width: 100%;
+   max-width: 1500px;
+   
+    margin: 30px auto;
+   
+}
+.image  {
+    object-fit: contain;
+}
+.coure {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+}
+.bg-cour {
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #ddd;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.bg-cour img {
+    object-fit: contain;
+}

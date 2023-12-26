@@ -1,0 +1,22 @@
+.top-header {
+    display: block;
+    width: 100%;
+    position: sticky;
+    
+    top: 0;
+   
+    padding: 5px 0;
+    margin: 0;
+    background-color: #ddd;
+    border-bottom: 1px solid lightgray;
+}
+.top-header-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+}
+.top-header-info span {
+    color:#555;
+    font-weight: 500;
+}

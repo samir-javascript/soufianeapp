@@ -1,0 +1,9 @@
+.order-details-container {
+    max-width: 1500px;
+    margin: 0 auto;
+}
+@media (max-width:700px) {
+     .order-details-container {
+        margin: 0 30px;
+     }
+}

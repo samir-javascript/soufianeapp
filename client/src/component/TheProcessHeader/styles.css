@@ -1,0 +1,19 @@
+.header-process {
+    background-color: white;
+    height: 60px;
+    width: 100%;
+    box-shadow: 0px 2px 2px rgba(0,0,0,.4);
+    position: relative;
+    z-index: 1;
+}
+.header-process-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    
+}
+.header-process-icon {
+    position: absolute;
+    left: 50px;
+}
