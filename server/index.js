@@ -38,9 +38,9 @@ app.use('/api/orders', ordersRoutes);
 app.use('/api/uploads', uploadsRoutes)
 app.use('/api/add-to-wishlist', wishlistsRoutes)
 if(process.env.NODE_ENV === 'production') {
-   app.use(express.static(path.join(__dirname, '/frontend/build')));
+   app.use(express.static(path.join(__dirname, '/client/build')));
    app.get('*', (req,res)=> {
-      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
    })
 }else {
   app.get('/', (req, res) => {
