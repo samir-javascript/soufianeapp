@@ -43,7 +43,7 @@ if(process.env.NODE_ENV === 'production') {
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
    })
 }else {
-  app.get('/', (req, res) => {
+  app.get('/', (req, res) => { 
     res.send('hello world 2024 is coming');
   });
 }
