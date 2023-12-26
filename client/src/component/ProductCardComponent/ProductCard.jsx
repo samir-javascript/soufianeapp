@@ -106,8 +106,9 @@ const ProductCard = ({ product, cancelWishlist , widthMesure }) => {
         <div className='percent'>
           -20%
         </div>
-        <div onClick={addToCartHandler} className='cart-shopping'>
+        <div  data-tooltip-id="my-tooltip" data-tooltip-content="add to cart" onClick={addToCartHandler} className='cart-shopping'>
           <FaShoppingBag />
+          <Tooltip style={tooltipStyle}  id="my-tooltip" />
         </div>
       </div>
       </div>
