@@ -10,7 +10,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import { connectToDb } from './config/db.js';
 import { notFound, errorHandler } from './middlewares/errorMiddleware.js';
-const __dirname = path.resolve();
+
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -52,6 +52,7 @@ app.use('/api/add-to-wishlist', wishlistsRoutes);
 
 if (process.env.NODE_ENV === 'production') {
   
+  const __dirname = path.resolve();
   app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
   app.use(express.static(path.join(__dirname, '/client/build')));
 
@@ -59,7 +60,7 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
   );
 } else {
-  
+  const __dirname = path.resolve();
   app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
   app.get('/', (req, res) => {
     res.send('API is running....');

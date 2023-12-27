@@ -64,7 +64,7 @@ const EditProduct = () => {
          console.log(error)
          toast.error(error || error?.data?.message || error?.error)
       }
-         console.log(e.target.files[0])
+        
      }
    if(isLoading) return <Loading />
    if(error) return <Message variant='danger'>{error?.data?.message || error?.error} </Message>
