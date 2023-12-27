@@ -6,19 +6,19 @@ import Message from '../../../component/MessageComponent/Message'
 import FormContainer from '../../../component/FormContainer'
 import { Button, Form } from 'react-bootstrap'
 import { toast } from 'react-toastify'
-import { useUploadProductImageMutation } from '../../../slices/productsApi'
+//import { useUploadProductImageMutation } from '../../../slices/productsApi'
 const EditProduct = () => {
   const {id: productId} = useParams()
   const navigate = useNavigate()
   const { data: product, isLoading , error} = useGetSingleProductQuery(productId)
   const [updateProduct, {isLoading:loadingUPD}] = useUpdateProductMutation()
-  const [uploadImage, {isLoading:loadingImage, error:errorUplaodingImage}] = useUploadProductImageMutation()
+ // const [uploadImage, {isLoading:loadingImage, error:errorUplaodingImage}] = useUploadProductImageMutation()
    const [name,setName] = useState('')
    const [description,setDescription] = useState('')
    const [price,setPrice] = useState(0)
    const [brand,setBrand] = useState('')
    const [category,setCategory] = useState('')
-   const [image,setImage] = useState('')
+   const [productImage,setProductImage] = useState('')
    const [countInStock, setCountInStock] = useState(0)
    useEffect(() => {
      if(product) {
@@ -28,44 +28,59 @@ const EditProduct = () => {
       setPrice(product.price)
       setDescription(product.description)
       setCountInStock(product.countInStock)
-      setImage(product.image)
+      setProductImage(product.image)
      }
    }, [product])
-   const handleSubmit = async(e)=> {
-       e.preventDefault()
-       try {
-        const updatedProduct = {
-          productId,
-          name,
-          brand,
-          category,
-          price,
-          countInStock,
-          image,
-          description
-       }
-       await updateProduct(updatedProduct).unwrap()
-       toast.success('product updated')
-       navigate('/admin/productsList')
-       } catch (error) {
-          console.log(error)
-          toast.error(error?.data?.message || error || error?.error)
-       }
-      
+   
+   const uploadFileHandler =(e)=> {
+        const file = e.target.files[0]
+        transformFile(file)
    }
-     const uploadFileHandler = async(e)=> {
+   const transformFile = (file)=> {
+          const reader  = new FileReader()
+          if(file) {
+            reader.readAsDataURL(file)
+            reader.onloadend = ()=> {
+                setProductImage(reader.result)
+            }
+          }
+   }
+ 
+   const handleSubmit = async(e)=> {
+      e.preventDefault()
+      try {
+       const updatedProduct = {
+         productId,
+         name,
+         brand,
+         category,
+         price,
+         countInStock,
+         image: productImage,
+         description
+      }
+      await updateProduct(updatedProduct).unwrap()
+      toast.success('product updated')
+      navigate('/admin/productsList')
+      } catch (error) {
+         console.log(error)
+         toast.error(error?.data?.message || error || error?.error)
+      }
+     
+  }
+    /* const uploadFileHandler = async(e)=> {
       const formData = new FormData()
       formData.append('image', e.target.files[0]);
       try {
          const res = await uploadImage(formData).unwrap()
          toast.success(res.message)
-         setImage(res.image)
+         setProductImage(res.image)
       } catch (error) {
          console.log(error)
          toast.error(error || error?.data?.message || error?.error)
       }
         
-     }
+     }*/
    if(isLoading) return <Loading />
    if(error) return <Message variant='danger'>{error?.data?.message || error?.error} </Message>
   return (
@@ -93,7 +108,7 @@ const EditProduct = () => {
                 </Form.Group>
                 <Form.Group className='mb-4' controlId='image'>
                    <Form.Label>Product image</Form.Label>
-                   <Form.Control type='text' placeholder='Enter image url' value={image} onChange={(e)=> setImage(e.target.value)} ></Form.Control>
+                   <Form.Control type='text' placeholder='Enter image url' value={productImage} onChange={(e)=> setProductImage(e.target.value)} ></Form.Control>
                     <Form.Control type='file' Label='choose file' onChange={uploadFileHandler} >
 
                     </Form.Control>

@@ -2,7 +2,7 @@ import path from 'path';
 import express from 'express';
 import productsRoutes from './Routes/productsRoutes.js';
 import usersRoutes from './Routes/usersRoutes.js';
-import uploadsRoutes from './Routes/uploadsRoutes.js';
+//import uploadsRoutes from './Routes/uploadsRoutes.js';
 import ordersRoutes from './Routes/ordersRoutes.js';
 import wishlistsRoutes from './Routes/wishlistsRoutes.js';
 import dotenv from 'dotenv';
@@ -32,11 +32,7 @@ app.get('/api/config/paypal', (req, res) =>
   res.send({ clientId: process.env.PAYPAL_CLIENT_ID })
 );
 
-app.use('/api/products', productsRoutes);
-app.use('/api/users', usersRoutes);
-app.use('/api/orders', ordersRoutes);
-app.use('/api/uploads', uploadsRoutes);
-app.use('/api/add-to-wishlist', wishlistsRoutes);
+
 
 // Serve the client build in production
 /*if (process.env.NODE_ENV === 'production') {
@@ -49,23 +45,29 @@ app.use('/api/add-to-wishlist', wishlistsRoutes);
     res.send('hello world 2024 is coming');
   });
 }*/
+app.use('/api/products', productsRoutes);
+app.use('/api/users', usersRoutes);
+app.use('/api/orders', ordersRoutes);
+//app.use('/api/uploads', uploadsRoutes)
+app.use('/api/add-to-wishlist', wishlistsRoutes);
+const __dirname = path.resolve()
+// Put it here
+//app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
 if (process.env.NODE_ENV === 'production') {
-  
-  const __dirname = path.resolve();
-  app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
-  app.use(express.static(path.join(__dirname, '/client/build')));
+  app.use(express.static(path.join(__dirname, '/client/build')))
 
   app.get('*', (req, res) =>
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-  );
+  )
 } else {
-  const __dirname = path.resolve();
-  app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
   app.get('/', (req, res) => {
-    res.send('API is running....');
-  });
+    res.send('Api running....')
+  })
 }
+
+
+
 
 app.use(notFound);
 app.use(errorHandler);

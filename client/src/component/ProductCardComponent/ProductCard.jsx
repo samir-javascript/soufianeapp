@@ -62,7 +62,7 @@ const ProductCard = ({ product, cancelWishlist , widthMesure }) => {
     <div className={widthMesure ? "card" : "card"}>
       <Link style={{ textDecoration: 'none' }} to={`/products/${product._id}`}>
         <div className='image-container'>
-          <img style={{ objectFit: 'contain' }} width={200} height={200} src={product.image} alt={product.description} />
+          <img style={{ objectFit: 'contain' }} width={200} height={200} src={product.image.url} alt={product.description} />
          
         </div>
       </Link>

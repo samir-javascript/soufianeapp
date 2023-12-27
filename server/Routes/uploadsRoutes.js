@@ -41,7 +41,7 @@ router.post('/', upload.single('image'), (req, res)=>  {
 })
 export default router;
 */
-
+/*
 import path from 'path';
 import express from 'express';
 import multer from 'multer';
@@ -90,4 +90,4 @@ router.post('/', (req, res) => {
   });
 });
 
-export default router;
+export default router;*/

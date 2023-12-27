@@ -106,7 +106,7 @@ const ProductDetailsPage = () => {
             toast.error(error?.data?.message || error?.error || error)
          }
      }
-     const normalizedImagePath = product.image.replace(/\\/g, '/');
+    // const normalizedImagePath = product.image.replace(/\\/g, '/');
   return (
     <div className='product-details-container'>
        <Link className='btn btn-light m-3' to='/'>
@@ -118,7 +118,7 @@ const ProductDetailsPage = () => {
     </Helmet>
        <Row className='justify-content-md-center m-3'>
        <Col className='mb-3' md={3}>
-          <Image  className='image'  alt={product.name} src={normalizedImagePath} fluid />
+          <Image  className='image'  alt={product.name} src={product.image.url} fluid />
        </Col>
        <Col md={5}>
           <ListGroup variant='flush'>

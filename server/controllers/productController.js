@@ -1,6 +1,6 @@
 import asyncHandler from "../middlewares/asyncHandler.js";
 import Product from "../models/productModel.js";
-
+import cloudinary from "../utils/cloudinary.js";
 const getProducts = asyncHandler(async (req, res) => {
     const pageSize = process.env.PAGINATION_LIMIT
     const page = Number(req.query.pageNumber) || 1;
@@ -80,22 +80,31 @@ const createProduct = asyncHandler(async(req,res)=> {
         image: '/images/sample.jpg'
     })
     const createdProduct = await product.save()
-    res.status(201).json(createdProduct)
+      res.status(201).json(createdProduct)
 })
 
 const updateProduct = asyncHandler(async(req,res)=> {
     const { name, description, image, countInStock, price, brand, category} = req.body;
      const product = await Product.findById(req.params.id)
      if(product) {
-        product.name = name;
-        product.image = image;
-        product.description = description;
-        product.countInStock = countInStock,
-        product.price = price;
-        product.category = category;
-        product.brand = brand;
-        const updatedProduct = await product.save()
-        res.status(200).json(updatedProduct)
+           if(image) {
+            const uploadResult =   await cloudinary.uploader.upload(image, {
+                upload_preset: 'starshiners-online-shop'
+              })
+              if(uploadResult) {
+                product.name = name;
+                product.image = uploadResult;
+                product.description = description;
+                product.countInStock = countInStock,
+                product.price = price;
+                product.category = category;
+                product.brand = brand;
+                const updatedProduct = await product.save()
+                res.status(200).json(updatedProduct)
+              }
+             
+           }
+        
      }else {
         res.status(404)
         throw new Error('product not found')
