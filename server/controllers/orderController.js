@@ -28,6 +28,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
          ...itemFromClient,
          product: itemFromClient._id,
          price: matchingItemFromDB.price,
+         image: matchingItemFromDB.image.secure_url, // Extract secure_url from Cloudinary response
          _id: undefined,
        };
      });
