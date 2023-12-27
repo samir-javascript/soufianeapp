@@ -161,13 +161,16 @@ const [deliver, {isLoading: loadingUpdateToDLV, error: errorDLV}] = useDeliverOr
                 <Message>Order is empty</Message>
               ) : (
                 <ListGroup variant='flush'>
-                  {order.orderItems.map((item, index) => (
+                  {order.orderItems.map((item, index) => { 
+                  
+                    return ( 
                     <ListGroup.Item key={index}>
                           
                       <Row>
                         <Col md={1}>
                           <Image
-                            src={item.image.url}
+                            src={item.image}
+                           
                             alt={item.name}
                             fluid
                             rounded
@@ -183,7 +186,7 @@ const [deliver, {isLoading: loadingUpdateToDLV, error: errorDLV}] = useDeliverOr
                         </Col>
                       </Row>
                     </ListGroup.Item>
-                  ))}
+)}  )}
                 </ListGroup>
               )}
             </ListGroup.Item>

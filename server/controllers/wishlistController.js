@@ -35,9 +35,10 @@ const getWishListProducts = asyncHandler(async (req, res) => {
     const wishlist = await WishListModel.findOne({
       userId: req.user._id,
     }).populate({
-      path: "products"
+      path: "products",
     })
     if(wishlist) {
+      wishlist.products.sort((a, b) => b._id.getTimestamp() - a._id.getTimestamp());
       res.status(200).json(wishlist)
     }else  {
       res.status(404)
