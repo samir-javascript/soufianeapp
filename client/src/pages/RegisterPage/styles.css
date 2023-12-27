@@ -36,10 +36,14 @@
     width: 400px;
     border: 1px solid lightgrey;
     margin: 0 auto 20px;
-   
     border-radius: 5px;
     height: fit-content; 
     padding: 20px;
+}
+@media (max-width:768px) {
+    .form {
+         width: 300px;
+    }
 }
 h1 {
     font-weight: 500;

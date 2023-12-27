@@ -244,7 +244,7 @@ const ProductDetailsPage = () => {
                        <Form onSubmit={handleCreateReview}>
                           <Form.Group controlId='rating' className='my-2'>
                              <Form.Label>Rating</Form.Label>
-                             <Form.Control as='select' value={rating}
+                             <Form.Control required as='select' value={rating}
                               onChange={(e)=> setRating(Number(e.target.value))} >
                                 <option value="">select...</option>
                                 <option value={1}>1 - poor</option>
@@ -256,7 +256,7 @@ const ProductDetailsPage = () => {
                           </Form.Group>
                           <Form.Group controlId='comment' className='my-2'>
                              <Form.Label>Comment</Form.Label>
-                             <Form.Control as='textarea' value={comment} rows="4" placeholder='Write a customer review on starshiner'
+                             <Form.Control required as='textarea' value={comment} rows="4" placeholder='Write a customer review on starshiner'
                               onChange={(e)=> setComment(e.target.value)} >
                                
                              </Form.Control>

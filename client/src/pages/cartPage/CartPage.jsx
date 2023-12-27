@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Rating from '../../component/RatingComponent/Rating'
+import './styles.css'
 import {
   Row,
   Col,
@@ -76,7 +77,7 @@ const CartScreen = () => {
                     </Form.Control>
                   </Col>
                   <Col md={2}>
-                    <Button
+                    <Button className='btn-remove'
                       type='button'
                       variant='light'
                       onClick={() => removeFromCartHandler(item._id)}
