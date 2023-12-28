@@ -75,6 +75,15 @@ const ProductSchema = mongoose.Schema({
 });
 
 // recalculate the countInStock each time the order goes throught;
+ProductSchema.statics.updateStock = async function (orderItems) {
+    for (const orderItem of orderItems) {
+      const product = await this.findById(orderItem.product);
+      if (product) {
+        product.countInStock -= orderItem.qty;
+        await product.save();
+      }
+    }
+  };
 // add image GALLERY;
 
 const Product = models.Product || model('Product', ProductSchema);
