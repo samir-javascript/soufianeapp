@@ -2,14 +2,11 @@ import asyncHandler from "../middlewares/asyncHandler.js";
 import Product from "../models/productModel.js";
 import cloudinary from "../utils/cloudinary.js";
 const getProducts = asyncHandler(async (req, res) => {
-    const pageSize = process.env.PAGINATION_LIMIT
+    const pageSize = process.env.PAGINATION_LIMIT; // 16 per page;
     const page = Number(req.query.pageNumber) || 1;
-    const count = await Product.countDocuments();
+    const count = await Product.countDocuments();  // number of products we have in DB;
   
-    // Include the category filter if provided in the query
-   // const categoryFilter = req.query.category ? { category: req.query.category } : {};
   
-    // Use object destructuring to include the keyword and category filters
     const { keyword } = req.query;
     const products = await Product.find({
       ...keyword ? { name: { $regex: keyword, $options: "i" } } : {},

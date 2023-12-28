@@ -114,7 +114,7 @@ const [deliver, {isLoading: loadingUpdateToDLV, error: errorDLV}] = useDeliverOr
                <title> starshiners | place your order |  Online Clothing for women</title>
                 <meta name='description' content='Indulge in a world of fashion with StarShiners, where every click opens the door to a curated collection of trendy apparel. Elevate your wardrobe with the latest styles, from chic dresses to casual essentials. Experience seamless shopping and express your unique style with confidence. Dive into a realm of elegance at StarShiners – where fashion meets you' />
        </Helmet>
-      <h1>Order {order._id}</h1>
+     
       <Row>
         <Col md={8}>
           <ListGroup variant='flush'>
