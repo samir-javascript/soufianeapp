@@ -12,7 +12,7 @@ const NotFound = () => {
             <div className='notfound'>
 
             
-             <img style={{objectFit:'contain'}}  src={'/images/mmall-404_1-removebg-preview.png'} alt="not found img indicator" />
+             <img className='notfound-img' style={{objectFit:'contain'}}  src={'/images/mmall-404_1-removebg-preview.png'} alt="not found img indicator" />
              <h2 className='notfound-heading'>Oops! The page you are looking for doesn't exist.</h2>
              <p>You may find what you like in the Links below:</p>
              <div className='btn-container'>
