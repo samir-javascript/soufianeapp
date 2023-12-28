@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { CiMenuFries } from "react-icons/ci";
-import { FaArrowLeft, FaArrowRight, FaFirstOrder, FaRegHeart, FaUser, FaWindowClose } from "react-icons/fa";
+import {  FaFirstOrder, FaRegHeart, FaUser, FaWindowClose } from "react-icons/fa";
 import { NavDropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -111,7 +111,7 @@ const MobileNav = () => {
                               </div>
                            </NavDropdown.Item>
                            <NavDropdown.Item>
-                           <Link to='/browse-wishlist-products' className='dropdown-flex'>
+                           <Link style={{textDecoration:'none'}} to='/browse-wishlist-products' className='dropdown-flex'>
                                  <FaRegHeart className='dropdown-icon' /> <span>My favourites</span>
                               </Link>
                            </NavDropdown.Item>
