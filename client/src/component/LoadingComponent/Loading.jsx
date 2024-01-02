@@ -11,6 +11,7 @@ function Loading() {
             height:'100px',
             margin: '3rem auto',
             display :'block'
+           
         }}
          ></Spinner>
    

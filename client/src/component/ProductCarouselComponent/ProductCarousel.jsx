@@ -44,8 +44,7 @@ const ProductCarousel = () => {
            
             <Carousel.Item>
                <Link to='/browse-products/Beauté - Santé'>
-                  <Image src={ isMobile ? 'https://www.marjanemall.ma/media/wysiwyg/offre_vedd/homeslider_FINDANNEE/output_image_32__1.webp' :  "https://www.marjanemall.ma/media/wysiwyg/offre_vedd/homeslider_FINDANNEE/output_image_34__1.webp"} alt={"any"} fluid />
-                  
+                  <Image src={ isMobile ? 'https://www.marjanemall.ma/media/wysiwyg/offre_vedd/homeslider_FINDANNEE/output_image_32__1.webp' :  "https://www.marjanemall.ma/media/wysiwyg/offre_vedd/homeslider_FINDANNEE/output_image_34__1.webp"} alt={"any"} fluid /> 
                </Link>
             </Carousel.Item>
        
