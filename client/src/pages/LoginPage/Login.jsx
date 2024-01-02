@@ -9,6 +9,7 @@ import { toast } from 'react-toastify'
 import Spinner from 'react-bootstrap/esm/Spinner'
 import ProcessHeader from '../../component/TheProcessHeader/ProcessHeader'
 import { Helmet } from 'react-helmet-async'
+import { trackLoginEvent } from '../../utils/googleAnalytics'
 const Login = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -19,12 +20,14 @@ const Login = () => {
   const [password,setPassword] = useState('')
   const [login, {isLoading}] = useLoginMutation()
   const { userInfo} = useSelector(state => state.auth);
-  useEffect(() => {
-     if(userInfo) {
-      navigate(redirect)
-     }
-  }, [navigate, redirect, userInfo])
   
+  useEffect(() => {
+    if (userInfo) {
+      // Track login event when user successfully logs in
+     
+      navigate(redirect);
+    }
+  }, [navigate, redirect, userInfo]);
   const handleSubmit =  async(e)=> {
       e.preventDefault()
       if(!email || !password) {
@@ -33,6 +36,7 @@ const Login = () => {
       try { 
        const res = await login({email, password}).unwrap()
        dispatch(setCredentials({...res}))
+       trackLoginEvent();
        navigate(redirect)
       } catch (error) {
         console.log(error)

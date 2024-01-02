@@ -11,3 +11,10 @@ export const trackPageView = () => {
     page: window.location.pathname + window.location.search,
   });
 };
+export const trackLoginEvent = () => {
+  ReactGA.event({
+    category: 'User',
+    action: 'Login',
+    label: 'User Login',
+  });
+};

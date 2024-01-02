@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import ReactGA from 'react-ga4'
 import { Row, Col, ListGroup, Image, Card, Button, Spinner } from 'react-bootstrap';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import { useSelector } from 'react-redux';
@@ -60,6 +61,12 @@ const [deliver, {isLoading: loadingUpdateToDLV, error: errorDLV}] = useDeliverOr
         await payOrder({ orderId, details }).unwrap();
         refetch();
         toast.success('Order is paid');
+        ReactGA.event({
+          category: 'E-commerce',
+          action: 'Pay Order',
+          label: 'Order Paid',
+          value: order.totalPrice, // You can set a numeric value if applicable
+        });
       } catch (err) {
         toast.error(err?.data?.message || err.error);
       }

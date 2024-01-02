@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Link, useNavigate , useLocation} from 'react-router-dom'
+import ReactGA from 'react-ga4'
 import { useRegisterMutation } from '../../slices/usersApi'
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
@@ -22,6 +23,7 @@ const Register = () => {
   const [registerUser,  { isLoading }] = useRegisterMutation()
   useEffect(() => {
     if(userInfo) {
+     
       navigate(redirect)
     }
   }, [userInfo,navigate,redirect])
@@ -36,6 +38,11 @@ const Register = () => {
        
           const res =  await registerUser({name, email, password}).unwrap()
           dispatch(setCredentials({...res}))
+          ReactGA.event({
+            category:'Register user',
+            action:'Register',
+            label:'user Registered',
+         })
           navigate(redirect)
         } catch (error) {
            console.log(error)
