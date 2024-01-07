@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { useParams, useNavigate } from 'react-router-dom'
+import { IoCloseOutline } from "react-icons/io5";
 import './styles.css'
 const Search = () => {
     const {keyword: keywordUrl} = useParams()
@@ -25,7 +26,7 @@ const Search = () => {
            }} className='header-input' type="text" value={keyword} 
             onChange={(e)=> setKeyword(e.target.value)}
            placeholder='Search on Starshiner'  />
-            <FaSearch size={22} className='search-icon' />
+            {keyword ? <IoCloseOutline onClick={()=> setKeyword('')} size={22} className='search-icon' /> : <FaSearch size={22} className='search-icon' /> } 
       
           
         </div>

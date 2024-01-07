@@ -4,7 +4,7 @@ import { FaUser, FaRegHeart, FaFirstOrder, FaSearch, FaArrowLeft } from 'react-i
 import { LinkContainer } from 'react-router-bootstrap';
 import { GiShoppingBag } from 'react-icons/gi';
 import { NavDropdown } from 'react-bootstrap';
-import { IoChevronDown } from 'react-icons/io5';
+import { IoChevronDown, IoCloseOutline } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLogoutMutation } from '../../slices/usersApi';
 import { logout } from '../../slices/authSlice';
@@ -73,7 +73,7 @@ const Header = () => {
                           handleSearch()
                       }
                 }}    value={keyword}  onChange={(e)=> setKeyword(e.target.value)} type='text' placeholder='search on starshiners' />
-                <FaSearch style={{ cursor: 'pointer' }} color='gray' size={22} />
+                 {keyword ? <IoCloseOutline onClick={()=> setKeyword('')} size={22}  /> : <FaSearch size={22}  /> } 
               </div>
             </div>
           </div>

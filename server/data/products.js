@@ -11,6 +11,8 @@ const products = [
     countInStock: 10, // update this each time the order is paid;
     rating: 4.5,
     numReviews: 12,
+    
+
   },
   {
    
