@@ -19,9 +19,9 @@ const Wishlist = () => {
                 There are no items in your wishlist
             </Message>
             <Link to='/'>
-            <button className='login-btn'>
-                 Browse Products
-            </button>
+                <button className='login-btn'>
+                   Browse Products
+                </button>
             </Link>
             </> 
           ): (

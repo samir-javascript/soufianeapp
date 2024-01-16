@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './styles.css';
-import ReactGA from 'react-ga4'
+
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import { FaShoppingBag } from 'react-icons/fa';
@@ -34,12 +34,7 @@ const ProductCard = ({ product, cancelWishlist , widthMesure }) => {
     try {
       dispatch(addToCart({ ...product, qty: qty }));
       setQty((prevQty) => prevQty + 1);
-      ReactGA.event({
-        category: 'E-commerce',
-        action: 'Add to Cart',
-        label: product.name,
-        value: qty,
-     })
+      
       toast.success('Product added to cart');
     } catch (error) {
       console.error('Error adding to cart:', error);

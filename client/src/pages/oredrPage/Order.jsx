@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import ReactGA from 'react-ga4'
+
 import { toast } from 'react-toastify';
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -38,12 +38,7 @@ const Order = () => {
         totalPrice: Number(cart.totalPrice),
       }).unwrap();
       dispatch(clearCart());
-      ReactGA.event({
-        category: 'E-commerce',
-        action: 'Place Order',
-        label: 'Order Placed',
-        value: cart.totalPrice, // You can set a numeric value if applicable
-      });
+     
       navigate(`/order/${res._id}`);
     } catch (err) {
       toast.error(err);
@@ -162,6 +157,6 @@ const Order = () => {
       </Row>
     </>
   );
-};
+}; 
 
 export default Order;

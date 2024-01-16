@@ -1,8 +1,6 @@
 
-import { useEffect } from "react";
-
 import Header from "./component/HeaderComponent/Header";
-import { Routes, Route, useLocation} from 'react-router-dom'
+import { Routes, Route} from 'react-router-dom'
 import Home from "./pages/HomeScreen/Home";
 import ProductDetailsPage from "./pages/ProductPage/ProductDetailsPage";
 import CartPage from "./pages/cartPage/CartPage";
@@ -29,20 +27,11 @@ import Footer from "./component/FooterComponent/Footer";
 import Wishlist from "./pages/wishlistPage/Wishlist";
 import TopHeader from "./component/topHeaderComponent/TopHeader";
 import NotFound from "./component/NotFoundPage/NotFound";
-import { initGA, trackPageView } from "./utils/googleAnalytics";
+
+
+
 
 function App() {
-  const location = useLocation();
-  useEffect(() => {
-    // Initialize Google Analytics with your Measurement ID
-    initGA('G-B6H99JPYMJ');
-  }, []);
-
-  useEffect(() => {
-    // Track a pageview on route changes
-    trackPageView();
-  }, [location.pathname, location.search]);
-   
   return (
     <div className="app-container">
     <TopHeader />

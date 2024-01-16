@@ -57,7 +57,7 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route   POST /api/users/logout
 // @access  Public
 const logoutUser = (req, res) => {
-    res.cookie('jwt', '' , {
+    res.cookie('jwtoken', '' , {
       httpOnly: true,
       expires:  new Date(0),
     })

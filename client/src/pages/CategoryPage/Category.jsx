@@ -19,8 +19,7 @@ const Category = () => {
     <div>
       <Helmet>
         <title>starshiners | {categoryBanner.name} category </title>
-        <meta name='description' content={''} />
-    </Helmet>
+     </Helmet>
         <div>
          <div className='category-link-container'>
          <div className='category-top-link'>

@@ -1,6 +1,6 @@
 
 import {Link, useNavigate, useParams } from 'react-router-dom'
-import ReactGA from 'react-ga4'
+
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import { useState } from 'react'
@@ -46,12 +46,7 @@ const ProductDetailsPage = () => {
   const addToCartHandler =async ()=> {
    
      dispatch(addToCart({ ...product, qty }));
-     ReactGA.event({
-        category: 'E-commerce',
-        action: 'Add to Cart',
-        label: product.name,
-        value: qty,
-     })
+     
    
    navigate('/cart');
   }

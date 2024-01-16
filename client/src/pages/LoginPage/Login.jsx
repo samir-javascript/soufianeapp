@@ -9,7 +9,7 @@ import { toast } from 'react-toastify'
 import Spinner from 'react-bootstrap/esm/Spinner'
 import ProcessHeader from '../../component/TheProcessHeader/ProcessHeader'
 import { Helmet } from 'react-helmet-async'
-import { trackLoginEvent } from '../../utils/googleAnalytics'
+
 const Login = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -36,7 +36,7 @@ const Login = () => {
       try { 
        const res = await login({email, password}).unwrap()
        dispatch(setCredentials({...res}))
-       trackLoginEvent();
+      
        navigate(redirect)
       } catch (error) {
         console.log(error)
